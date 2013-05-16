@@ -39,11 +39,519 @@
       <!-- Begin page content -->
       
     <div class="container">
-      <h1>Know Thy Complexities!</h1>
-      <p>Hi there!&nbsp; This webpage covers the space and time Big-O complexities of common algorithms used in Computer Science.&nbsp; When preparing for technical interviews in the past, I found myself spending hours crawling the internet putting together the best, average, and worst case complexities for search and sorting algorithms so that I wouldn't be stumped when asked about them.&nbsp; Over the last few years, I've interviewed at several Silicon Valley startups, and also some bigger companies, like Yahoo, eBay, LinkedIn, and Google, and each time that I prepared for an interview, I thought to msyelf "Why oh why hasn't someone created a nice Big-O cheat sheet?".&nbsp; So, to save all of you fine folks a ton of time, I went ahead and created one.&nbsp; Enjoy!</p>
+      <h1>Знайте свою сложность</h1>
+      <p>Всем привет!&nbsp; Эта страничка расскажет вам о сложности различных структур данных и алгоритмов, используемых в
+          программировании.&nbsp; В прошлом, во время подготовки к техническим интервью, я понял, что тратил часы на поиск и
+          сбор информации о производительности алгоритмов поиска и сортировки.&nbsp; Мне не хотелось попасть в тупик, отвечая
+          на вопрос интервьюера.&nbsp; За последние несколько лет я проходил интервью в нескольких стартапах Кремниевой долины
+          и крупных компаниях таких как Yahoo, eBay, LinkedIn и Google, и каждый раз, готовясь к ним, я думал
+          "Почему, ну почему кто-нибудь не сделал красивую шпаргалку по сложностям алгоритмов?".&nbsp;
+          И, чтобы сохранить всем вам время, я взял и сам сделал такую.</p>
 
+      <table class="table table-bordered table-striped" id="legend">
+          <tbody>
+          <tr>
+              <td><code class="green">Хорошо</code></td>
+              <td><code class="yellow">Терпимо</code></td>
+              <td><code class="red">Плохо</code></td>
+          </tr>
+          </tbody>
+      </table>
 
+      <h2 id="searching">Поиск</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th>Алгоритм</th>
+              <th>Структура данных</th>
+              <th colspan="2">Сложность по времени</th>
+              <th colspan="3">Сложность по занимаемой памяти</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th></th>
+              <th>В среднем</th>
+              <th>В худшем случае</th>
+              <th>В худшем случае</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Depth-first_search">Поиск в глубину</a></td>
+              <td>Граф с |V| вершинами и |E| ребрами</td>
+              <td><code>-</code></td>
+              <td><code class="green">O(|E| + |V|)</code></td>
+              <td><code class="green">O(|V|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Breadth-first_search">Поиск в ширину</a></td>
+              <td>Граф с |V| вершинами и |E| ребрами</td>
+              <td><code>-</code></td>
+              <td><code class="green">O(|E| + |V|)</code></td>
+              <td><code class="green">O(|V|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Binary_search_algorithm">Бинарный поиск</a></td>
+              <td>Сортированый массив из n элементов</td>
+              <td>
+                  <code class="green">O(log(n))</code>
+              </td>
+              <td>
+                  <code class="green">O(log(n))</code>
+              </td>
+              <td>
+                  <code class="green">O(1)</code>
+              </td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Brute-force_search">Линейный поиск (Полный перебор)</a></td>
+              <td>Массив</td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Dijkstra's_algorithm">Shortest path by Dijkstra,<br>using a Min-heap as priority queue</a></td>
+              <td>Граф с |V| вершинами и |E| ребрами</td>
+              <td><code class="yellow">O((|V| + |E|) log |V|)</code></td>
+              <td><code class="yellow">O((|V| + |E|) log |V|)</code></td>
+              <td><code class="yellow">O(|V|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Dijkstra's_algorithm">Shortest path by Dijkstra,<br>using an unsorted array as priority queue</a></td>
+              <td>Граф с |V| вершинами и |E| ребрами</td>
+              <td><code class="yellow">O(|V|^2)</code></td>
+              <td><code class="yellow">O(|V|^2)</code></td>
+              <td><code class="yellow">O(|V|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Bellman%E2%80%93Ford_algorithm">Shortest path by Bellman-Ford</a></td>
+              <td>Граф с |V| вершинами и |E| ребрами</td>
+              <td><code class="yellow">O(|V||E|)</code></td>
+              <td><code class="yellow">O(|V||E|)</code></td>
+              <td><code class="yellow">O(|V|)</code></td>
+          </tr>
+          </tbody>
+      </table>
 
+      <h2 id="sorting">Сортировка</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th>Алгоритм</th>
+              <th>Структура данных</th>
+              <th colspan="3">Сложность по времени</th>
+              <th colspan="3">Сложность по дополнительной памяти</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th></th>
+              <th>В лучшем случае</th>
+              <th>В среднем</th>
+              <th>В худшем случае</th>
+              <th>В худшем случае</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Quicksort">Быстрая сотрировка</a></td>
+              <td>Массив</td>
+              <td><code class="yellow">O(n log(n))</code></td>
+              <td><code class="green">O(n log(n))</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Merge_sort">Сортировка слиянием</a></td>
+              <td>Массив</td>
+              <td><code class="yellow">O(n log(n))</code></td>
+              <td><code class="green">O(n log(n))</code></td>
+              <td><code class="green">O(n log(n))</code></td>
+              <td><code class="red">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Heapsort">Пирамидальная сортировка</a></td>
+              <td>Массив</td>
+              <td><code class="yellow">O(n log(n))</code></td>
+              <td><code class="green">O(n log(n))</code></td>
+              <td><code class="green">O(n log(n))</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Bubble_sort">Сортировка пузырьком</a></td>
+              <td>Массив</td>
+              <td><code class="green">O(n)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Insertion_sort">Сортировка вставками</a></td>
+              <td>Массив</td>
+              <td><code class="green">O(n)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Selection_sort">Сортировка выбором</a></td>
+              <td>Массив</td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a rel="tooltip" title="Только для целых чисел меньше k" href="http://en.wikipedia.org/wiki/Bucket_sort">Блочная сортировка</a></td>
+              <td>Массив</td>
+              <td><code class="green">O(n+k)</code></td>
+              <td><code class="green">O(n+k)</code></td>
+              <td><code class="red">O(n^2)</code></td>
+              <td><code class="yellow">O(nk)</code></td>
+          </tr>
+          <tr>
+              <td><a rel="tooltip" title="Constant number of digits 'k'" href="http://en.wikipedia.org/wiki/Radix_sort">Поразрядная сортировка</a></td>
+              <td>Массив</td>
+              <td><code class="green">O(nk)</code></td>
+              <td><code class="green">O(nk)</code></td>
+              <td><code class="green">O(nk)</code></td>
+              <td><code class="yellow">O(n+k)</code></td>
+          </tr>
+          </tbody>
+      </table>
+
+      <h2 id="data-structures">Структуры данных</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th>Структура данных</th>
+              <th colspan="8">Сложность по времени</th>
+              <th>Сложность по занимаемой памяти</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th colspan="4">В среднем</th>
+              <th colspan="4">В худшем случае</th>
+              <th>В худшем случае</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th>Доступ по индексу</th>
+              <th>Поиск</th>
+              <th>Вставка</th>
+              <th>Удаление</th>
+              <th>Доступ по индексу</th>
+              <th>Поиск</th>
+              <th>Вставка</th>
+              <th>Удаление</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Array_data_structure">Массив</a></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code>-</code></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code>-</code></td>
+              <td><code>-</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Dynamic_array">Динамический массив</a></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code>-</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists">Однонаправленный список</a></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Doubly_linked_list">Двунаправленный список</a></td>
+
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Skip_list">Список с пропусками</a></td>
+
+              <td><code class="red">O(n)</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n log(n))</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Hash_table">Хеш-таблица</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code>-</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Binary_search_tree">Двоичное дерево поиска</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code>-</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="red">O(n)</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/B_tree">Б-дерево</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Red-black_tree">Красно-черное дерево</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/AVL_tree">АВЛ-дерево</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="green">O(log(n))</code></td>
+              <td><code class="yellow">O(n)</code></td>
+          </tr>
+          </tbody>
+      </table>
+
+      <h2 id="heaps">Кучи</h2>
+      <table class="table table-bordered table-striped">
+          <thead>
+          <tr>
+              <th>Кучи</th>
+              <th colspan="7">Сложность по времени</th>
+          </tr>
+          <tr>
+              <th></th>
+              <th>Балансировка</th>
+              <th>Поиск максимального</th>
+              <th>Удаление максимального</th>
+              <th>Изменение (увеличение) ключа</th>
+              <th>Вставка</th>
+              <th>Удаление</th>
+              <th>Слияние</th>
+              <th></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Linked_list">Связный список (сортированый)</a></td>
+              <td><code>-</code></td> <!-- heapify -->
+              <td><code class="green">O(1)</code></td> <!-- Find max -->
+              <td><code class="green">O(1)</code></td> <!-- Extract max -->
+              <td><code class="red">O(n)</code></td> <!-- Increase -->
+              <td><code class="red">O(n)</code></td> <!-- insert -->
+              <td><code class="green">O(1)</code></td> <!-- delete -->
+              <td><code class="red">O(m+n)</code></td> <!-- merge -->
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Linked_list">Связный список (не сортированный)</a></td>
+              <td><code>-</code></td> <!-- heapify -->
+              <td><code class="red">O(n)</code></td> <!-- Find max -->
+              <td><code class="red">O(n)</code></td> <!-- Extract max -->
+              <td><code class="green">O(1)</code></td> <!-- Increase -->
+              <td><code class="green">O(1)</code></td> <!-- insert -->
+              <td><code class="green">O(1)</code></td> <!-- delete -->
+              <td><code class="green">O(1)</code></td> <!-- merge -->
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Binary_heap">Двоичная куча</a></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="red">O(m+n)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Binomial_heap">Биномиальная куча</a></td>
+              <td><code>-</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+              <td><code class="yellow">O(log(n))</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Fibonacci_heap">Фибоначчиева куча</a></td>
+              <td><code>-</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code rel="tooltip" title="Amortized" class="yellow">O(log(n))*</code></td>
+              <td><code rel="tooltip" title="Amortized" class="green">O(1)*</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code rel="tooltip" title="Amortized" class="yellow">O(log(n))*</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          </tbody>
+      </table>
+
+      <h2 id="graphs">Graphs</h2>
+      <table class="table table-bordered table-striped">
+          <tbody>
+          <tr>
+              <th>Тип хранения вершин и ребер</th>
+              <th>Занимаемая память</th>
+              <th>Добавление вершины</th>
+              <th>Добавление ребра</th>
+              <th>Удаление вершины</th>
+              <th>Удаление ребра</th>
+              <th>Провера связности</th>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Adjacency_list">Список смежности</a></td>
+              <td><code class="yellow">O(|V|+|E|)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="yellow">O(|V| + |E|)</code></td>
+              <td><code class="yellow">O(|E|)</code></td>
+              <td><code class="yellow">O(|V|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Incidence_list">Список инцедентности</a></td>
+              <td><code class="yellow">O(|V|+|E|)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="yellow">O(|E|)</code></td>
+              <td><code class="yellow">O(|E|)</code></td>
+              <td><code class="yellow">O(|E|)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Adjacency_matrix">Матрица смежности</a></td>
+              <td><code class="red">O(|V|^2)</code></td>
+              <td><code class="red">O(|V|^2)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="red">O(|V|^2)</code></td>
+              <td><code class="green">O(1)</code></td>
+              <td><code class="green">O(1)</code></td>
+          </tr>
+          <tr>
+              <td><a href="http://en.wikipedia.org/wiki/Incidence_matrix">Матрица инцидентности</a></td>
+              <td><code class="red">O(|V| &sdot; |E|)</code></td>
+              <td><code class="red">O(|V| &sdot; |E|)</code></td>
+              <td><code class="red">O(|V| &sdot; |E|)</code></td>
+              <td><code class="red">O(|V| &sdot; |E|)</code></td>
+              <td><code class="red">O(|V| &sdot; |E|)</code></td>
+              <td><code class="yellow">O(|E|)</code></td>
+          </tr>
+          </tbody>
+      </table>
+
+      <h2 id="growth">Математические обозначения для сравнения асимптотического поведения функций.</h2>
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>Обозначение</th>
+              <th>Описание</th>
+          </tr>
+          <tr>
+              <td>(тетта) &#920;</td>
+              <td>Исследуемая функция ограничена снизу и сверху функцией с точностью до констатного множителя</td>
+          </tr>
+          <tr>
+              <td>(большое О) O</td>
+              <td>Исследуемая функция ограничена сверху функцией с точностью до констатного множителя</td>
+          </tr>
+          <tr>
+              <td>(маленькое О) o</td>
+              <td>Исследуемая функция несравнимо меньше функции</td>
+          </tr>
+          <tr>
+              <td>(большая Омега) &#937;</td>
+              <td>Исследуемая функция ограничена снизу функцией с точностью до констатного множителя</td>
+          </tr>
+          <tr>
+              <td>(маленькая Омега) &#969;</td>
+              <td>Исследуемая функция несравнимо больше функции</td>
+          </tr>
+      </table>
+
+      В кратце: если алгоритм имеет сложность _ то его производительность будет _
+      <table class="table table-bordered table-striped">
+          <tr>
+              <th>алгоритм</th>
+              <th>производительность</th>
+          </tr>
+          <tr>
+              <td>o(n)</td>
+              <td>&lt; n</td>
+          </tr>
+          <tr>
+              <td>O(n)</td>
+              <td>&#8804; n</td>
+          </tr>
+          <tr>
+              <td>&#920;(n)</td>
+              <td>= n</td>
+          </tr>
+          <tr>
+              <td>&#937;(n)</td>
+              <td>&#8805; n</td>
+          </tr>
+          <tr>
+              <td>&#969;(n)</td>
+              <td>&gt; n</td>
+          </tr>
+      </table>
     </div>
 
 
